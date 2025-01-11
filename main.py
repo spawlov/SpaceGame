@@ -23,6 +23,7 @@ def get_stars(canvas, height: int, width: int, stars: list, quantity: int) -> li
             random.randint(2, height - 2),
             random.randint(2, width - 2),
             random.choice(stars),
+            random.randint(0, 3),
         )
         for i in range(quantity)
     ]
