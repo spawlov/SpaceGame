@@ -12,7 +12,9 @@ def get_frames(path: str) -> list:
     frames = []
     for filename in os.listdir(path):
         with open(f"{path}/{filename}") as file:
-            frames.append(file.read())
+            frame = file.read()
+        for _ in range(2):
+            frames.append(frame)
     return frames
 
 
