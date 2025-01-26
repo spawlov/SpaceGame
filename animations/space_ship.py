@@ -1,11 +1,12 @@
 import asyncio
 import itertools
 import statistics
+from typing import Any
 
 from .curses_tools import draw_frame, get_frame_size, read_controls
 
 
-async def animate_spaceship(canvas, start_height, start_width, frames):
+async def animate_spaceship(canvas: Any, start_height: int, start_width: int, frames: list[str]) -> None:
     rocket_frames = itertools.cycle(frames)
     height, width = canvas.getmaxyx()
     border_width = 1
@@ -26,8 +27,8 @@ async def animate_spaceship(canvas, start_height, start_width, frames):
                     border_width,
                     new_frame_position_x,
                     width - frame_width - border_width,
-                ]
-            )
+                ],
+            ),
         )
 
         frame_position_y = int(
@@ -36,8 +37,8 @@ async def animate_spaceship(canvas, start_height, start_width, frames):
                     border_width,
                     new_frame_position_y,
                     height - frame_height - border_width,
-                ]
-            )
+                ],
+            ),
         )
 
         draw_frame(canvas, frame_position_y, frame_position_x, frame)

@@ -1,14 +1,15 @@
 import asyncio
 import curses
+from typing import Any
 
 
 async def blink(
-    canvas,
-    row,
-    column,
-    symbol,
-    offset_tics,
-):
+    canvas: Any,
+    row: int,
+    column: int,
+    symbol: str,
+    offset_tics: int,
+) -> None:
     while True:
         if offset_tics == 0:
             canvas.addstr(row, column, symbol, curses.A_DIM)

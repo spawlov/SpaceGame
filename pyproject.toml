@@ -10,18 +10,27 @@ python = "^3.12"
 poetry = "1.8.4"
 
 
+[tool.poetry.group.test.dependencies]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.mypy]
-python = 3.12
-check_untyped_defs = true
-ignore_errors = false
-ignore_missing_imports = true
-warn_unused_ignores = true
-warn_redundant_casts = true
-warn_unused_configs = true
+#python = 3.12
+strict = true
+#check_untyped_defs = true
+#ignore_errors = false
+#ignore_missing_imports = true
+#warn_unused_ignores = true
+#warn_redundant_casts = true
+#warn_unused_configs = true
 
 [tool.black]
 line-length = 120
+
+[tool.isort]
+profile = "black"
+line_length = 120
+multi_line_output = 3
+skip_gitignore = true

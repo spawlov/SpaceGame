@@ -1,3 +1,5 @@
+from typing import Any
+
 SPACE_KEY_CODE = 32
 LEFT_KEY_CODE = 260
 RIGHT_KEY_CODE = 261
@@ -5,7 +7,7 @@ UP_KEY_CODE = 259
 DOWN_KEY_CODE = 258
 
 
-def read_controls(canvas):
+def read_controls(canvas: Any) -> tuple[int, int, bool]:
     """Read keys pressed and returns tuple witl controls state."""
 
     rows_direction = columns_direction = 0
@@ -36,7 +38,7 @@ def read_controls(canvas):
     return rows_direction, columns_direction, space_pressed
 
 
-def draw_frame(canvas, start_row, start_column, text, negative=False):
+def draw_frame(canvas: Any, start_row: int, start_column: int, text: str, negative: bool = False) -> None:
     """Draw multiline text fragment on canvas, erase text instead of drawing if negative=True is specified."""
 
     rows_number, columns_number = canvas.getmaxyx()
@@ -68,7 +70,7 @@ def draw_frame(canvas, start_row, start_column, text, negative=False):
             canvas.addch(row, column, symbol)
 
 
-def get_frame_size(text):
+def get_frame_size(text: str) -> tuple[int, int]:
     """Calculate size of multiline text fragment, return pair — number of rows and colums."""
 
     lines = text.splitlines()
