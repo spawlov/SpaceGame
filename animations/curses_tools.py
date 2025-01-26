@@ -1,3 +1,4 @@
+import asyncio
 from typing import Any
 
 SPACE_KEY_CODE = 32
@@ -77,3 +78,8 @@ def get_frame_size(text: str) -> tuple[int, int]:
     rows = len(lines)
     columns = max([len(line) for line in lines])
     return rows, columns
+
+
+async def sleep(tics: int = 1) -> None:
+    for _ in range(tics):
+        await asyncio.sleep(0)

@@ -1,6 +1,7 @@
-import asyncio
 import curses
 from typing import Any
+
+from .curses_tools import sleep
 
 
 async def blink(
@@ -13,24 +14,20 @@ async def blink(
     while True:
         if offset_tics == 0:
             canvas.addstr(row, column, symbol, curses.A_DIM)
-            for _ in range(20):
-                await asyncio.sleep(0)
+            await sleep(20)
             offset_tics += 3
 
         if offset_tics == 1:
             canvas.addstr(row, column, symbol)
-            for _ in range(3):
-                await asyncio.sleep(0)
+            await sleep(3)
             offset_tics += 1
 
         if offset_tics == 2:
             canvas.addstr(row, column, symbol, curses.A_BOLD)
-            for _ in range(5):
-                await asyncio.sleep(0)
+            await sleep(5)
             offset_tics = 0
 
         if offset_tics == 3:
             canvas.addstr(row, column, symbol)
-            for _ in range(3):
-                await asyncio.sleep(0)
+            await sleep(3)
             offset_tics -= 2
